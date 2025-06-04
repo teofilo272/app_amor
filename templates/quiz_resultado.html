@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados do Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container result-page">
+        <h1 class="fade-in-up">Seus Resultados!</h1>
+        <p class="fade-in-up delay-1">Você acertou {{ acertos }} de {{ total }} perguntas!</p>
+
+        <div class="results-detail fade-in-up delay-2">
+            {% for resultado in resultados %}
+                <p><strong>{{ resultado.pergunta }}</strong></p>
+                <p>Sua resposta: <span class="{{ 'correct' if resultado.correto else 'incorrect' }}">{{ resultado.sua_resposta }}</span></p>
+                {% if not resultado.correto %}
+                    <p>Resposta correta: <span class="correct">{{ resultado.resposta_correta }}</span></p>
+                {% endif %}
+                <hr>
+            {% endfor %}
+        </div>
+        <button class="fade-in-up delay-3" onclick="location.href='/declaracao'">Continuar</button>
+        <div class="hearts-background"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

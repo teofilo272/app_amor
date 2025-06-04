@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Nossa Música</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
+    <div class="container music-page">
+        <h1 class="fade-in-up">A Nossa Música</h1>
+        <p class="fade-in-up delay-1">Para selar este momento especial, aqui está a nossa música:</p>
+        <div class="qr-code-section fade-in-up delay-2">
+            <canvas id="qrcode"></canvas>
+            <p>Ou clique no link:</p>
+            <a href="{{ youtube_link }}" target="_blank">{{ youtube_link }}</a>
+        </div>
+        <div class="hearts-background"></div>
+    </div>
+    <script>
+        // Gera o QR Code
+        var qr = new QRious({
+            element: document.getElementById('qrcode'),
+            value: '{{ youtube_link }}',
+            size: 200,
+            background: 'transparent', // Cor de fundo do QR code
+            foreground: '#8b0000' // Cor dos pontos do QR code (vermelho escuro)
+        });
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

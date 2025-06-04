@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz do Nosso Amor - Pergunta {{ numero_pergunta }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container quiz-page">
+        <h2 class="fade-in-up">Pergunta {{ numero_pergunta }} de {{ total_perguntas }}</h2>
+        <p class="fade-in-up delay-1">{{ pergunta.pergunta }}</p>
+        <form method="POST" action="/quiz" class="fade-in-up delay-2">
+            {% for opcao in pergunta.opcoes %}
+                <label class="option-button">
+                    <input type="radio" name="resposta" value="{{ opcao }}" required>
+                    <span>{{ opcao }}</span>
+                </label><br>
+            {% endfor %}
+            <button type="submit">Próxima</button>
+        </form>
+        <div class="hearts-background"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

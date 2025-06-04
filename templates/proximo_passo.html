@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Que Vem Por Aí?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container next-step-page">
+        <h1 class="fade-in-up">E tem mais...</h1>
+        <p class="fade-in-up delay-1">
+            Esta é apenas uma pequena demonstração do meu amor por você.
+            Prepare-se, pois o melhor ainda está por vir!
+        </p>
+        <p class="fade-in-up delay-2">
+            Nosso futuro juntos será repleto de alegrias, aventuras e muitos momentos inesquecíveis.
+        </p>
+        <button class="fade-in-up delay-3" onclick="location.href='/musica'">Descobrir a Surpresa Final</button>
+        <div class="hearts-background"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

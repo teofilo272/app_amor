@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Amor da Minha Vida</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container welcome-page">
+        <h1 class="fade-in-up">Bem-vinda, meu amor!</h1>
+        <p class="fade-in-up delay-1">Prepare-se para uma pequena viagem pela nossa história...</p>
+        <button class="fade-in-up delay-2" onclick="location.href='/quiz'">Começar o Quiz</button>
+        <div class="hearts-background"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
