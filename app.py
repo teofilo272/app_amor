@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+import os  # <<< ADICIONE ESTA LINHA AQUI!
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET_KEY') or 'minha_chave_local_padrao' # Use esta linha!
