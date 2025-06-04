@@ -22,7 +22,7 @@ body {
     width: 90%;
     position: relative;
     z-index: 10;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 h1, h2 {
