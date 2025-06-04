@@ -23,6 +23,7 @@ body {
     position: relative;
     z-index: 10;
     overflow-y: auto;
+    max-height: 90vh; /* Adicione isso para limitar a altura da caixa e forçar o scroll, se necessário */
 }
 
 h1, h2 {
