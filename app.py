@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__)
-app.secret_key = 'sua_chave_secreta_aqui_muito_segura' # ***Mude para uma chave secreta forte e única!***
+app.secret_key = os.environ.get('FLASK_SECRET_KEY') or 'minha_chave_local_padrao' # Use esta linha!
 
 # Perguntas do Quiz
 perguntas = [
