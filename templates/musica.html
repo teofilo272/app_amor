@@ -3,31 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Nossa Música</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-</head>
+    <title>Nossa História em Mapas</title> <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
 <body>
-    <div class="container music-page">
-        <h1 class="fade-in-up">A Nossa Música</h1>
-        <p class="fade-in-up delay-1">Para selar este momento especial, aqui está a nossa música:</p>
-        <div class="qr-code-section fade-in-up delay-2">
-            <canvas id="qrcode"></canvas>
-            <p>Ou clique no link:</p>
-            <a href="{{ youtube_link }}" target="_blank">{{ youtube_link }}</a>
-        </div>
+    <div class="container final-page"> <h1 class="fade-in-up">E a jornada continua...</h1>
+        <p class="fade-in-up delay-1">
+            Este aplicativo é só o começo da nossa aventura.
+        </p>
+        <p class="fade-in-up delay-2">
+            A surpresa final é um convite para você folhear um novo capítulo da nossa história:
+        </p>
+        <h2 class="fade-in-up delay-3" style="color: #CD5C5C;">"Nossa História em Mapas"</h2> <p class="fade-in-up delay-4">
+            Um caderno feito com carinho, onde cada página é um mapa das nossas memórias.
+        </p>
+        <p class="fade-in-up delay-5">
+            Espero que você goste de reviver cada momento e planejar os próximos comigo! ❤️
+        </p>
         <div class="hearts-background"></div>
     </div>
-    <script>
-        // Gera o QR Code
-        var qr = new QRious({
-            element: document.getElementById('qrcode'),
-            value: '{{ youtube_link }}',
-            size: 200,
-            background: 'transparent', // Cor de fundo do QR code
-            foreground: '#8b0000' // Cor dos pontos do QR code (vermelho escuro)
-        });
-    </script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

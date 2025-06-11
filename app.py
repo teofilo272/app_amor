@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+import os  # <<< ADICIONE ESTA LINHA AQUI!
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET_KEY') or 'minha_chave_local_padrao' # Use esta linha!
@@ -6,54 +7,54 @@ app.secret_key = os.environ.get('FLASK_SECRET_KEY') or 'minha_chave_local_padrao
 # Perguntas do Quiz
 perguntas = [
     {
-        'pergunta': 'Qual foi o nosso primeiro encontro?',
-        'opcoes': ['Cafeteria', 'Parque', 'Cinema', 'Restaurante'],
-        'resposta': 'Cafeteria'
+        'pergunta': 'Qual foi a primeira vez que sentimos uma tensão rolando entre nós?',
+        'opcoes': ['Pico do Urubu (Maio 2024)', 'For Save 2024', 'Chácara no aniversário do meu pai', 'No teatro do ZOE'],
+        'resposta': 'No teatro do ZOE'
     },
     {
-        'pergunta': 'Qual é a sua comida favorita que eu cozinho?',
-        'opcoes': ['Lasanha', 'Pizza caseira', 'Risoto', 'Massa com molho'],
-        'resposta': 'Pizza caseira'
+        'pergunta': 'Qual frase eu usei pra tentar te provocar no ZOE?',
+        'opcoes': ['Não estou afim de ninguém por enquanto', 'Não tem nenhuma menina bonita nesse zoe', 'A minha eposa é a mulher mais linda desse mundo, só não sei quem é ainda (olhando pra você)', 'To querendo namorar, mas só daqui 2 anos '],
+        'resposta': 'A minha eposa é a mulher mais linda desse mundo, só não sei quem é ainda (olhando pra você)'
     },
     {
-        'pergunta': 'Qual é a nossa música?',
-        'opcoes': ['Thinking Out Loud', 'Perfect', 'All of Me', 'Outra'],
-        'resposta': 'Perfect'
+        'pergunta': 'Quantos meses depois do nosso primeiro beijo que começamos a namorar?',
+        'opcoes': ['6 meses, pra dar tempo de se conhecer bastante', '3 meses, pra ver se realmente o sentimento era real', '2 meses, pra nos adaptarmos um ao outro e entender as intenções', '1 mês, porque sim.'],
+        'resposta': '1 mês, porque sim.'
     },
     {
-        'pergunta': 'Onde demos o nosso primeiro beijo?',
-        'opcoes': ['Na porta da sua casa', 'No meu carro', 'Na balada', 'No cinema'],
-        'resposta': 'Na porta da sua casa'
+        'pergunta': 'Qual o motivo do nosso dia de namoro ser dia 22?',
+        'opcoes': ['Porque era a única data que tinha disponível no restaurante', 'Porque foi o dia que eu comprei as alianças', 'Porque o dia 22 simboliza a idade que tínhamos quando nos conhecemos, nos beijamos e começamos a namorar (além de ter relação com 2002, o ano que nascemos)', 'Porque 22 são dois patinhos na lagoa'],
+        'resposta': 'Porque o dia 22 simboliza a idade que tínhamos quando nos conhecemos, nos beijamos e começamos a namorar (além de ter relação com 2002, o ano que nascemos)'
     },
     {
-        'pergunta': 'Qual é o seu filme favorito para ver comigo?',
-        'opcoes': ['Comédia romântica', 'Filme de ação', 'Terror', 'Animação'],
-        'resposta': 'Comédia romântica'
+        'pergunta': 'Das músicas que eu toquei no pedido de namoro, qual foi a música para a letra B?',
+        'opcoes': ['BB (Garupa de moto Amarela) / Tim Bernardes', 'Beijinho no Ombro / Valesca Popozuda', 'Bumbum Granada / MC Zaac', 'Batom de Cereja / Israel e Rodolfo'],
+        'resposta': 'BB (Garupa de moto Amarela) / Tim Bernardes'
     },
     {
-        'pergunta': 'Qual a cor dos meus olhos?',
-        'opcoes': ['Castanhos', 'Azuis', 'Verdes', 'Pretos'],
-        'resposta': 'Castanhos'
+        'pergunta': 'Como uma expressão de loucura de amor, qual foi a frase que pichei no muro pra você?',
+        'opcoes': ['Fe & Bia <3', 'Felipe Teofilo & Beatriz Ferreira', 'Deus é fiel', 'Nenhuma das anteriores, pois eu não sou louco de fazer isso, e de acordo com a Lei de Crimes Ambientais (Lei nº 9.605/98). O crime é tipificado no artigo 65 da lei, que prevê pena de detenção de três meses a um ano, e multa, para quem pichar.'],
+        'resposta': 'Fe & Bia <3'
     },
     {
-        'pergunta': 'Qual é a nossa piada interna favorita?',
-        'opcoes': ['A do pato', 'A do pinguim', 'A do tomate', 'Não temos uma'],
-        'resposta': 'A do pato'
+        'pergunta': 'No fatídico dia do Pico do Urubu, qual loucura nós cometemos?',
+        'opcoes': ['Te pedi em casamento e falei que te amo', 'Nos beijamos loucamente como se não houvesse o amanhã', 'Declaramos amor um ao outro com todas as 5 linguagens do amor', 'Todas alternativas acima'],
+        'resposta': 'Todas alternativas acima'
     },
     {
-        'pergunta': 'Qual é o presente que eu mais gostei de te dar?',
-        'opcoes': ['Viagem', 'Livro', 'Flor', 'Jóia'],
-        'resposta': 'Viagem'
+        'pergunta': 'No nosso segundo beijo, na rua da Padaria Dona Augusta, qual era a temperatura exata do dia, levando em conta que era um dia chuvoso?',
+        'opcoes': ['17.3 ºC', '20.4 ºC', '14.9 ºC', 'A temperatura exata não sei, só sei que o beijo estava pegando fogo 🥵'],
+        'resposta': 'A temperatura exata não sei, só sei que o beijo estava pegando fogo 🥵'
     },
     {
-        'pergunta': 'Qual o nosso lugar favorito para passear?',
-        'opcoes': ['Praia', 'Montanha', 'Cidade', 'Campo'],
-        'resposta': 'Praia'
+        'pergunta': 'O que fizemos no nosso segundo dia 22?',
+        'opcoes': ['Fomos na sorveteria em Ferraz', 'Mó chatão aquele filme do cinema, mas o date foi bom demais', 'Fomos no Max Feffer', 'Fomos no rodízio de hamburguer Hi Guys'],
+        'resposta': 'Mó chatão aquele filme do cinema, mas o date foi bom demais'
     },
     {
-        'pergunta': 'Se pudéssemos viajar para qualquer lugar agora, qual seria?',
-        'opcoes': ['Paris', 'Maldivas', 'Tóquio', 'Roma'],
-        'resposta': 'Paris'
+        'pergunta': 'Por que eu te amo tanto?',
+        'opcoes': ['Pq vc é mó gente boa', 'Pq tem que amar o próximo', 'Pq amar é grátis', 'Porque você é tudo que eu sempre quis pra minha vida, dona do meu coração, rainha da sabedoria, minha mulher maravilha, minha Vênus, minha arte moderna, minha Afrodite, minha Garota de Ipanema, minha musa do verão, o Amor da Minha Vida!'],
+        'resposta': 'Porque você é tudo que eu sempre quis pra minha vida, dona do meu coração, rainha da sabedoria, minha mulher maravilha, minha Vênus, minha arte moderna, minha Afrodite, minha Garota de Ipanema, minha musa do verão, o Amor da Minha Vida!'
     }
 ]
 
@@ -111,8 +112,8 @@ def proximo_passo():
 
 @app.route('/musica')
 def musica():
-    youtube_link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ" # ***Substitua pelo link da sua música!***
-    return render_template('musica.html', youtube_link=youtube_link)
+    # Não precisamos mais do youtube_link aqui
+    return render_template('musica.html') # Apenas renderiza o HTML
 
 if __name__ == '__main__':
     app.run(debug=True)
